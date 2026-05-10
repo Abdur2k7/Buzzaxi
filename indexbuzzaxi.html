@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buzzaxi Mumbai - Shared Shuttle</title>
+  <link rel="stylesheet" href="stylebuzzaxi.css" />
+</head>
+<body>
+  
+  <div class="login-container" id="login-container">
+    <div class="login-box">
+      <img src="images/buzzaxi logo.jpg" alt="Welcome logo" style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px;" />
+      <h1>🚕 Buzzaxi Mumbai</h1>
+      
+      
+
+      <form id="login-form">
+        <input type="text" placeholder="Username" id="username" required />
+        <input type="password" placeholder="Password" id="password" required />
+        <div id="login-error" class="error"></div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div class="app-container" id="app-container" style="display: none;">
+    
+    <form id="ride-form">
+      <select id="route" required>
+        <option value="" disabled selected>Select Mumbai Route</option>
+        
+        <optgroup label="🏙️ Andheri Area">
+          <option value="andheri-airport" data-distance="6">✈️ Andheri to Airport (6km)</option>
+          <option value="andheri-bkc" data-distance="7">🏢 Andheri to BKC (7km)</option>
+          <option value="andheri-juhu" data-distance="4">🏖️ Andheri to Juhu (4km)</option>
+          <option value="andheri-powai" data-distance="9">🏫 Andheri to Powai (9km)</option>
+        </optgroup>
+        
+        <optgroup label="✈️ Airport Routes">
+          <option value="airport-gateway" data-distance="23">🗼 Airport to Gateway (23km)</option>
+          <option value="airport-marinedrive" data-distance="22">🌊 Airport to Marine Drive (22km)</option>
+          <option value="airport-bandrawest" data-distance="8">🏘️ Airport to Bandra West (8km)</option>
+          <option value="airport-thane" data-distance="25">🌇 Airport to Thane (25km)</option>
+        </optgroup>
+        
+        <optgroup label="🏛️ South Mumbai">
+          <option value="cst-colaba" data-distance="4">🏰 CST to Colaba (4km)</option>
+          <option value="nariman-haji" data-distance="3">🕌 Nariman to Haji Ali (3km)</option>
+          <option value="fort-churchgate" data-distance="2">⛪ Fort to Churchgate (2km)</option>
+          <option value="colaba-mahalaxmi" data-distance="5">💎 Colaba to Mahalaxmi (5km)</option>
+        </optgroup>
+        
+        <optgroup label="🌆 Extended Mumbai">
+          <option value="thane-borivali" data-distance="18">🌳 Thane to Borivali (18km)</option>
+          <option value="dadar-parel" data-distance="6">🏭 Dadar to Parel (6km)</option>
+          <option value="virar-miraroad" data-distance="12">🌉 Virar to Mira Road (12km)</option>
+          <option value="ghatkopar-chembur" data-distance="8">🌃 Ghatkopar to Chembur (8km)</option>
+          <option value="miraroad-dharavi" data-distance="4">🏰 Miraroad to Dharavi (28km)</option>
+        </optgroup>
+      </select>
+
+      <select id="vehicle" required>
+        <option value="" disabled selected>Choose Vehicle</option>
+        
+        <optgroup label="🛺 Auto Rickshaws">
+          <option value="auto-standard" data-price="14" data-capacity="3">Standard Auto (₹14/km, 2 seats)</option>
+          <option value="auto-premium" data-price="18" data-capacity="3">Premium Auto (₹18/km, 2 seats)</option>
+          <option value="auto-electric" data-price="16" data-capacity="3">Electric Auto (₹16/km, 2 seats)</option>
+          <option value="auto-shared" data-price="10" data-capacity="3">Shared Auto (₹10/km, 2 seats)</option>
+        </optgroup>
+        
+        <optgroup label="🚗 Economy Cars">
+          <option value="economy-swift" data-price="18" data-capacity="5">Maruti Swift (₹18/km, 4 seats)</option>
+          <option value="economy-nexon" data-price="20" data-capacity="5">Tata Nexon EV (₹20/km, 4 seats)</option>
+          <option value="economy-ertiga" data-price="22" data-capacity="7">Maruti Ertiga (₹22/km, 6 seats)</option>
+          <option value="economy-xcent" data-price="19" data-capacity="5">Hyundai Xcent (₹19/km, 4 seats)</option>
+        </optgroup>
+        
+        <optgroup label="🚙 SUVs">
+          <option value="suv-creta" data-price="28" data-capacity="7">Hyundai Creta (₹28/km, 6 seats)</option>
+          <option value="suv-xuv700" data-price="32" data-capacity="7">Mahindra XUV700 (₹32/km, 6 seats)</option>
+          <option value="suv-fortuner" data-price="45" data-capacity="7">Toyota Fortuner (₹45/km, 6 seats)</option>
+          <option value="suv-safari" data-price="35" data-capacity="7">Tata Safari (₹35/km, 6 seats)</option>
+        </optgroup>
+        
+        <optgroup label="💎 Luxury Vehicles">
+          <option value="luxury-mercedes" data-price="80" data-capacity="5">Mercedes E-Class (₹80/km, 4 seats)</option>
+          <option value="luxury-bmw" data-price="85" data-capacity="5">BMW 5 Series (₹85/km, 4 seats)</option>
+          <option value="luxury-audi" data-price="90" data-capacity="5">Audi A6 (₹90/km, 4 seats)</option>
+          <option value="vip-maybach" data-price="300" data-capacity="4">Mercedes Maybach (₹300/km, 3 seats)</option>
+          <option value="ferrari-sf90" data-price="300" data-capacity="3">ferrari Sf-90 (₹300/km, 2 seats)</option>
+        </optgroup>
+      </select>
+
+      
+      <p id="fare">Estimated Fare: ₹0</p>
+      <button type="submit">Book Ride</button>
+    </form>
+
+   
+    <div class="mumbai-road">
+      <div class="welcome-banner">Welcome to Buzzaxi</div>
+      <div class="car">🚕</div>
+    </div>
+
+    <div style="text-align: center; margin: 20px auto;">
+      <img src="images/buzzaxi logo.jpg" alt="Buzzaxi Logo" style="width: 200px; height: 200px;;">
+    </div>
+
+    
+    <div class="ride-status" id="ride-status" style="display: none;">
+      <h2 id="ride-status-message">Ride Status:</h2>
+      <div id="driver-details">
+        <h3>Your Driver</h3>
+        <p>Name: <span id="driver-name"></span></p>
+        <p>Vehicle: <span id="driver-vehicle"></span></p>
+        <img id="driver-photo" src="" alt="Driver Photo" style="width: 100px; height: 100px; border-radius: 50%; display: none;" />
+
+      </div>
+      
+      <div id="seat-selection" style="display: none;">
+        <p id="current-passengers">Currently riding: 0</p>
+        <p id="available-seats">Available seats: 0</p>
+        <label for="seat-number">Select your seat:</label>
+        <select id="seat-number"></select>
+        <button id="confirm-seat">Confirm Seat</button>
+      </div>
+      <button id="cancel">Cancel Ride</button>
+    </div>
+
+    
+    <div class="vip-popup" id="vip-popup">
+      <div class="popup-content">
+        <h2>🌟 VIP Driver Assigned!</h2>
+        <div class="vip-details">
+          <p>Name: <span id="vip-name"></span></p>
+          <p>Vehicle: <span id="vip-car"></span></p>
+        </div>
+        <div class="popup-buttons">
+          <button id="reject-vip">Reject</button>
+          <button id="accept-vip">Accept</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="rating-popup" id="rating-popup">
+      <div class="popup-content">
+        <h2>Rate Your Ride</h2>
+        <div class="stars">
+          <span class="star" data-rating="1">⭐</span>
+          <span class="star" data-rating="2">⭐</span>
+          <span class="star" data-rating="3">⭐</span>
+          <span class="star" data-rating="4">⭐</span>
+          <span class="star" data-rating="5">⭐</span>
+        </div>
+        <button id="close-rating">Submit Rating</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="scriptbuzzaxi.js"></script>
+</body>
+</html>

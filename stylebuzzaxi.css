@@ -1,0 +1,227 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #fefefe;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Login Screen: Blue to Yellow Gradient */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #f9d342);
+}
+
+.login-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Main App Container: Full viewport */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: #fff8e1;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* Form Elements */
+select, button, input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+button {
+  background: #f9d342;
+  color: #1e3c72;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
+}
+
+/* Animated Road Section */
+.mumbai-road {
+  height: 150px;
+  background: #1e3c72;
+  border-radius: 8px;
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  color: #f9d342;
+  font-size: 3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  z-index: 1;
+  letter-spacing: 2px;
+  background: rgba(0, 0, 0, 0.2); /* Optional: add a subtle overlay */
+}
+
+
+.car {
+  animation: drive 12s linear infinite;
+}
+
+@keyframes drive {
+  0% { left: -20%; }
+  100% { left: 120%; }
+}
+
+/* Ride Status Section */
+.ride-status {
+  text-align: center;
+  padding: 1rem;
+  background: #e0f7fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+#ride-status-message {
+  margin: 0 0 1rem 0;
+  font-size: 1.5em;
+  color: #1e3c72;
+}
+
+/* Seat Selection Section */
+#seat-selection {
+  margin: 1rem 0;
+}
+
+/* VIP & Rating Popups */
+.vip-popup, .rating-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+/* Rating Stars */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.star {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ffd700;
+  transition: transform 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+/* Car Slider Container */
+#car-slider {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 10px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  height: 80px; /* Increased slider height */
+  align-items: center;
+}
+
+/* Individual Car Option */
+#car-slider .car-option {
+  min-width: 150px;  
+  height: 60px;      
+  line-height: 60px;
+  text-align: center;
+  margin: 0 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;   /* Increased font size */
+  font-weight: bold;
+  white-space: nowrap;
+  padding: 5px 10px;
+  background: #f9d342;
+  color: #1e3c72;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#car-slider .car-option span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#car-slider .car-option.selected {
+  background: #1e3c72;
+  color: #fff;
+  border-color: #f9d342;
+}
+
