@@ -2,10 +2,13 @@
   "name": "buzzaxi-mern-app",
   "version": "2.0.0",
   "description": "Buzzaxi Mumbai - Full MERN Stack Shared Shuttle Application",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "install:all": "npm --prefix server install && npm --prefix client install",
-    "build": "npm --prefix server install && npm --prefix client install && npm --prefix client run build",
-    "render-build": "npm --prefix server install && npm --prefix client install && npm --prefix client run build",
+    "install:all": "npm --prefix server install && npm --prefix client install --include=dev",
+    "build": "npm --prefix server install && npm --prefix client install --include=dev && npm --prefix client run build",
+    "render-build": "npm --prefix server install && npm --prefix client install --include=dev && npm --prefix client run build",
     "start": "npm --prefix server start",
     "dev:server": "npm --prefix server run dev",
     "dev:client": "npm --prefix client run dev"
