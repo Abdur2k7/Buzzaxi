@@ -7,7 +7,18 @@ import { getDBStatus } from '../config/db.js';
 
 // In-Memory fallback store
 const inMemoryStore = {
-  users: [],
+  users: [
+    {
+      _id: 'user_demo_mumbai',
+      username: 'demo',
+      email: 'demo@buzzaxi.com',
+      password: bcrypt.hashSync('demo123', 10),
+      name: 'Mumbai Commuter',
+      phone: '+91 98200 12345',
+      profilePic: 'https://api.dicebear.com/7.x/bottts/svg?seed=MumbaiCommuter',
+      createdAt: new Date()
+    }
+  ],
   drivers: [...initialDrivers.map((d, index) => ({ _id: `driver_${index + 1}`, ...d }))],
   rides: [],
   routes: initialRoutes,
@@ -216,5 +227,32 @@ export const dataService = {
       return inMemoryStore.rides[rideIndex];
     }
     return null;
+  },
+
+  seedDemoData: async () => {
+    const { isConnected } = getDBStatus();
+    if (!isConnected) return;
+    try {
+      const demoExists = await User.findOne({ username: 'demo' });
+      if (!demoExists) {
+        await User.create({
+          username: 'demo',
+          email: 'demo@buzzaxi.com',
+          password: await bcrypt.hash('demo123', 10),
+          name: 'Mumbai Commuter',
+          phone: '+91 98200 12345',
+          profilePic: 'https://api.dicebear.com/7.x/bottts/svg?seed=MumbaiCommuter'
+        });
+        console.log('[Buzzaxi Seed] Created default demo user in MongoDB: demo / demo123');
+      }
+      const driverCount = await Driver.countDocuments();
+      if (driverCount === 0) {
+        await Driver.insertMany(initialDrivers);
+        console.log('[Buzzaxi Seed] Seeded initial Mumbai drivers into MongoDB');
+      }
+    } catch (e) {
+      console.warn('[Buzzaxi Seed Warning]:', e.message);
+    }
   }
 };
+

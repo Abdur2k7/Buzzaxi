@@ -18,9 +18,6 @@ const generateToken = (userId) => {
 // POST /api/auth/register
 router.post('/register', async (req, res) => {
   try {
-    if (!getDBStatus().isConnected) {
-      return res.status(503).json({ message: 'MongoDB is not connected, so your account cannot be saved yet. Start MongoDB and try again.' });
-    }
     const username = String(req.body.username || '').trim();
     const email = String(req.body.email || '').trim().toLowerCase();
     const password = String(req.body.password || '');
@@ -62,9 +59,6 @@ router.post('/register', async (req, res) => {
 // POST /api/auth/login
 router.post('/login', async (req, res) => {
   try {
-    if (!getDBStatus().isConnected) {
-      return res.status(503).json({ message: 'MongoDB is not connected. Start MongoDB before signing in.' });
-    }
     const username = String(req.body.username || req.body.email || '').trim();
     const password = String(req.body.password || '');
 
